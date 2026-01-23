@@ -1,0 +1,32 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: AUTH-SERVICE
+  config:
+    import: optional:configserver:http://localhost:8888
+    
+  datasource:
+    url: jdbc:mysql://localhost:3306/dbint
+    username: root
+    password: Md1997
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+springdoc:
+  swagger-ui:
+    path: /auth/swagger-ui.html
+    display-request-duration: true
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
+  api-docs:
+    path: /auth/v3/api-docs
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
